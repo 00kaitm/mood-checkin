@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Daily Check-in</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Check-in">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#7c6cf0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Daily Check-in</h1>
+    <p id="quote" class="quote"></p>
+  </header>
+  <main>
+    <section class="card">
+      <h2 id="prompt">How are you feeling today?</h2>
+      <form id="form">
+        <div class="moods" role="radiogroup" aria-label="Mood from 1 (bad) to 5 (great)">
+          <label><input type="radio" name="mood" value="1" required><span>😞<small>1</small></span></label>
+          <label><input type="radio" name="mood" value="2"><span>😕<small>2</small></span></label>
+          <label><input type="radio" name="mood" value="3"><span>😐<small>3</small></span></label>
+          <label><input type="radio" name="mood" value="4"><span>🙂<small>4</small></span></label>
+          <label><input type="radio" name="mood" value="5"><span>😄<small>5</small></span></label>
+        </div>
+        <div class="scale"><span>Bad</span><span>Great</span></div>
+        <textarea id="note" rows="4" placeholder="Write how you're feeling today…"></textarea>
+        <button type="submit" id="save">Save today's check-in</button>
+        <p id="status" class="status" role="status"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Reminder</h2>
+      <p class="hint">Pick the time you'd like your daily motivational reminder.</p>
+      <div class="row">
+        <input type="time" id="time" value="20:00">
+        <button type="button" id="notify">Turn on</button>
+      </div>
+      <p id="notifyStatus" class="status" role="status"></p>
+      <button type="button" id="ics" class="secondary">Add a daily reminder to Calendar</button>
+    </section>
+
+    <section class="card">
+      <h2>History</h2>
+      <ul id="history"></ul>
+      <p id="empty" class="hint">No check-ins yet.</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
