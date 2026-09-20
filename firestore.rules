@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Each signed-in user can only touch their own check-ins.
+    match /users/{uid}/checkins/{day} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['date', 'mood', 'note', 'updatedAt'])
+        && request.resource.data.date is string && request.resource.data.date == day
+        && request.resource.data.mood is int
+        && request.resource.data.mood >= 1 && request.resource.data.mood <= 5
+        && request.resource.data.note is string && request.resource.data.note.size() <= 5000;
+      allow delete: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

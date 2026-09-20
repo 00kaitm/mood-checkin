@@ -1,6 +1,18 @@
 :root { --accent: #7c6cf0; --bg: #f5f5f7; --fg: #1c1c1e; --card: #fff; --muted: #6e6e73; }
 @media (prefers-color-scheme: dark) { :root { --bg: #000; --fg: #f5f5f7; --card: #1c1c1e; --muted: #98989d; } }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
+.screen { max-width: 600px; margin: 0 auto; padding: 32px 16px; }
+.lockscreen { text-align: center; padding-top: 25vh; }
+.lockscreen button { width: 100%; margin-top: 12px; }
+.field { display: block; margin-bottom: 12px; font-size: 14px; color: var(--muted); }
+.field input { display: block; width: 100%; margin-top: 4px; font: inherit; font-size: 16px; padding: 12px;
+  border: 1px solid #8884; border-radius: 10px; background: var(--bg); color: var(--fg); }
+button.link { background: transparent; color: var(--accent); padding: 8px 0; width: 100%; }
+#authForm button { width: 100%; }
+#authForm button + button { margin-top: 10px; }
+section.card button.secondary + p, section.card p + button.secondary { margin-top: 10px; }
+#signOut, #export { margin-top: 10px; }
 body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--fg);
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
 header { padding: 16px; max-width: 600px; margin: 0 auto; }
